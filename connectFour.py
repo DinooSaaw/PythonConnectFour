@@ -1,9 +1,7 @@
 def create_board(rows, columns):
     board = []
     for _ in range(rows):
-        row = []
-        for _ in range(columns):
-            row.append('-')
+        row = ['-' for _ in range(columns)]
         board.append(row)
     return board
 
@@ -38,10 +36,7 @@ def is_winning_move(board, row, column, player):
     return False
 
 def is_board_full(board):
-    for row in board:
-        if '-' in row:
-            return False
-    return True
+    return all('-' not in row for row in board)
 
 def play_connect_four():
     rows = 6
